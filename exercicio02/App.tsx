@@ -1,123 +1,159 @@
 
-import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
   Text,
-  TextInput,
-  ImageBackground,
   Pressable,
   FlatList,
   View,
-  Button
+  Image,
+  TextInput
 } from 'react-native';
+import { useState } from 'react';
+
 
 import {
   SafeAreaView,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
+  const [busca, setBusca] = useState('');
 
   const contatos = [
-   { id: '1', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '2', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '3', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '4', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+          { 
+          id: '1', 
+          foto: require('./assets/images/img01.png'),
+          nomeContato: 'Ana', 
+          mensagem: 'Amiga, você vai hoje?' 
+        },
 
-{ id: '5', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '6', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '7', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '8', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '2', 
+          foto: require('./assets/images/img02.png'),
+          nomeContato: 'Luiza', 
+          mensagem: 'Oi amiga, tudo bem?' 
+        },
 
-{ id: '9', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '10', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '11', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '12', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '3', 
+          foto: require('./assets/images/img03.png'),
+          nomeContato: 'Mariana', 
+          mensagem: 'Boa noite, filha ❤️' 
+        },
 
-{ id: '13', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '14', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '15', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '16', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '4', 
+          foto: require('./assets/images/img04.png'),
+          nomeContato: 'Camila', 
+          mensagem: 'Quando você chegar me avisa' 
+        },
 
-{ id: '17', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '18', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '19', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '20', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '5', 
+          foto: require('./assets/images/img05.png'),
+          nomeContato: 'Beatriz', 
+          mensagem: 'Amiga, vamos sair amanhã?' 
+        },
 
-{ id: '21', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '22', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '23', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '24', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '6', 
+          foto: require('./assets/images/img06.png'),
+          nomeContato: 'Júlia', 
+          mensagem: 'Estou com saudade de você ❤️' 
+        },
 
-{ id: '25', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '26', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '27', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '28', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '7', 
+          foto: require('./assets/images/img07.png'),
+          nomeContato: 'Larissa', 
+          mensagem: 'Você já fez o trabalho?' 
+        },
 
-{ id: '29', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '30', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '31', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '32', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '8', 
+          foto: require('./assets/images/img08.png'),
+          nomeContato: 'Fernanda', 
+          mensagem: 'Amiga, me liga quando puder' 
+        },
 
-{ id: '33', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '34', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '35', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '36', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
+        { 
+          id: '9', 
+          foto: require('./assets/images/img07.png'),
+          nomeContato: 'Larissa', 
+          mensagem: 'Você já fez o trabalho?' 
+        },
 
-{ id: '37', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-{ id: '38', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '39', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '40', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-
-{ id: '41', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '42', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '43', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-{ id: '44', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-
-{ id: '45', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '46', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '47', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-{ id: '48', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-
-{ id: '49', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '50', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '51', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-{ id: '52', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-
-{ id: '53', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '54', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '55', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-{ id: '56', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
-
-{ id: '57', foto: '2', nomeContato: 'Luiz', mensagem: "Oi amor da minha vida" },
-{ id: '58', foto: '3', nomeContato: 'Pai', mensagem: "Boa noite filha" },
-{ id: '59', foto: '4', nomeContato: 'Mãe', mensagem: "Boa noite filha" },
-{ id: '60', foto: '1', nomeContato: 'Pet', mensagem: "Oi" },
+        { 
+          id: '10', 
+          foto: require('./assets/images/img08.png'),
+          nomeContato: 'Fernanda', 
+          mensagem: 'Amiga, me liga quando puder' 
+        }
   ];
   return (
-    <SafeAreaProvider style={styles.relativo}>
-      <SafeAreaView style={styles.backGroundTelaInteira}> 
+    <SafeAreaProvider style={styles.telaPrincipal}>
+      <View style={styles.cabecalho}>
+        <SafeAreaView edges={["top"]} style={styles.conteudoCabecalho}>
+          <View style={styles.linhaCabecalho}>
+            <Text style={styles.titulo}>Conversas</Text>
+
+            <View style={styles.grupoAcoes}>
+              <Pressable style={styles.botaoAcao} accessibilityLabel="Abrir câmera">
+                <Ionicons name="camera-outline" size={24} color="#000" />
+              </Pressable>
+              <Pressable style={styles.botaoAcao} accessibilityLabel="Mais opções">
+                <Ionicons name="ellipsis-vertical" size={24} color="#000" />
+              </Pressable>
+            </View>
+          </View>
+
+          <View style={styles.barraPesquisa}>
+            <Ionicons name="search-outline" size={21} color="#667" />
+            <TextInput
+              value={busca}
+              onChangeText={setBusca}
+              placeholder="Pesquisar"
+              placeholderTextColor="#667"
+              style={styles.inputPesquisa}
+              accessibilityLabel="Pesquisar conversas"
+            />
+          </View>
+        </SafeAreaView>
+
+        </View>
+      <SafeAreaView edges={["bottom"]} style={styles.areaPrincipal}>
         <FlatList
         
-        data={contatos}
+        data={contatos.filter((contato) =>
+          contato.nomeContato.toLowerCase().includes(busca.toLowerCase())
+        )}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(contato) => contato.id}
         renderItem={({ item }) => (
-          <View style={styles.conversa}>
-            <Text>
-              {item.foto}
-            </Text>
-            <Text>
+          <View style={styles.linhaConversa}>
+            
+            <Image
+            source={item.foto}
+            style={styles.fotoContato}
+            />
+            <View>
+              <Text style={styles.nomeDaConversa}>
               {item.nomeContato}
             </Text>
-            <Text>
+            <Text style={styles.mensagemDaConversa}>
               {item.mensagem}
             </Text>
+
+            </View>
+            
           </View>
         )}
       />
       <Pressable 
-      style={styles.novaConversa}>
-        <Text>Nova conversa</Text>
+      style={styles.botaoNovaConversa}
+      accessibilityLabel="Nova conversa">
+        <Ionicons name="add" size={32} color="#fff" />
       </Pressable>
       
 
@@ -126,24 +162,98 @@ export default function App() {
   );
 }
 const styles = StyleSheet.create({
-  relativo:{
-    position:"relative",
-    margin:30
-  },
-  backGroundTelaInteira: {
+  telaPrincipal:{
     flex: 1,
+    position:"relative",
   },
-  conversa:{
-    flex:1,
-    flexDirection:"row"
+  areaPrincipal: {
+    flex: 1,
+    position: "relative",
   },
-  novaConversa:{
+  barraPesquisa: {
+    height: 42,
+    marginHorizontal: 16,
+    marginTop: 4,
+    marginBottom: 12,
+    paddingHorizontal: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff9df",
+    borderRadius: 12,
+  },
+  inputPesquisa: {
+    flex: 1,
+    height: "100%",
+    marginLeft: 8,
+    color: "#4a3b16",
+    fontSize: 16,
+  },
+  linhaConversa:{
+    flexDirection:"row",
+    alignItems:"center",
+    gap:14,
+    borderBottomWidth:1,
+    borderBottomColor:"#eee5b8",
+    minHeight:82,
+    paddingHorizontal:16,
+    paddingVertical:10,
+  },
+  botaoNovaConversa:{
     position: "absolute",
-    width:100,
-    height:100,
-    backgroundColor:'red',
-    bottom:40,
-    right:15,
+    width:64,
+    height:64,
+    backgroundColor:'#d6a928',
+    bottom:80,
+    right:16,
+    borderRadius:32,
+    alignItems:"center",
+    justifyContent:"center",
 
+  },
+  fotoContato:{
+    objectFit:'cover',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+  },
+  cabecalho: {
+    width: "100%",
+    backgroundColor: "#f5f3cd",
+  },
+  conteudoCabecalho: {
+    width: "100%",
+    backgroundColor: "#f5f3cd",
+  },
+  linhaCabecalho: {
+    minHeight: 58,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 16,
+  },
+  titulo: {
+    fontSize: 22,
+    fontWeight: "700",
+  },
+  grupoAcoes: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  botaoAcao: {
+    width: 40,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  nomeDaConversa: {
+    fontSize: 17,
+    fontWeight: "600",
+  },
+  mensagemDaConversa: {
+    marginTop: 4,
+    color: "#666",
+    fontSize: 14,
+  
   }
 });
