@@ -1,4 +1,3 @@
-
 import {
   StyleSheet,
   Text,
@@ -6,90 +5,86 @@ import {
   FlatList,
   View,
   Image,
-  TextInput
-} from 'react-native';
-import { useState } from 'react';
+  TextInput,
+} from "react-native";
+import { useState } from "react";
 
-
-import {
-  SafeAreaView,
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
-  const [busca, setBusca] = useState('');
+  const [busca, setBusca] = useState("");
 
   const contatos = [
-          { 
-          id: '1', 
-          foto: require('./assets/images/img01.png'),
-          nomeContato: 'Ana', 
-          mensagem: 'Amiga, você vai hoje?' 
-        },
+    {
+      id: "1",
+      foto: require("./assets/images/img01.png"),
+      nomeContato: "Ana",
+      mensagem: "Amiga, você vai hoje?",
+    },
 
-        { 
-          id: '2', 
-          foto: require('./assets/images/img02.png'),
-          nomeContato: 'Luiza', 
-          mensagem: 'Oi amiga, tudo bem?' 
-        },
+    {
+      id: "2",
+      foto: require("./assets/images/img02.png"),
+      nomeContato: "Luiza",
+      mensagem: "Oi amiga, tudo bem?",
+    },
 
-        { 
-          id: '3', 
-          foto: require('./assets/images/img03.png'),
-          nomeContato: 'Mariana', 
-          mensagem: 'Boa noite, filha ❤️' 
-        },
+    {
+      id: "3",
+      foto: require("./assets/images/img03.png"),
+      nomeContato: "Mariana",
+      mensagem: "Boa noite, filha",
+    },
 
-        { 
-          id: '4', 
-          foto: require('./assets/images/img04.png'),
-          nomeContato: 'Camila', 
-          mensagem: 'Quando você chegar me avisa' 
-        },
+    {
+      id: "4",
+      foto: require("./assets/images/img04.png"),
+      nomeContato: "Camila",
+      mensagem: "Quando você chegar me avisa",
+    },
 
-        { 
-          id: '5', 
-          foto: require('./assets/images/img05.png'),
-          nomeContato: 'Beatriz', 
-          mensagem: 'Amiga, vamos sair amanhã?' 
-        },
+    {
+      id: "5",
+      foto: require("./assets/images/img05.png"),
+      nomeContato: "Beatriz",
+      mensagem: "Amiga, vamos sair amanhã?",
+    },
 
-        { 
-          id: '6', 
-          foto: require('./assets/images/img06.png'),
-          nomeContato: 'Júlia', 
-          mensagem: 'Estou com saudade de você ❤️' 
-        },
+    {
+      id: "6",
+      foto: require("./assets/images/img06.png"),
+      nomeContato: "Júlia",
+      mensagem: "Estou com saudade de você",
+    },
 
-        { 
-          id: '7', 
-          foto: require('./assets/images/img07.png'),
-          nomeContato: 'Larissa', 
-          mensagem: 'Você já fez o trabalho?' 
-        },
+    {
+      id: "7",
+      foto: require("./assets/images/img07.png"),
+      nomeContato: "Larissa",
+      mensagem: "Você já fez o trabalho?",
+    },
 
-        { 
-          id: '8', 
-          foto: require('./assets/images/img08.png'),
-          nomeContato: 'Fernanda', 
-          mensagem: 'Amiga, me liga quando puder' 
-        },
+    {
+      id: "8",
+      foto: require("./assets/images/img08.png"),
+      nomeContato: "Fernanda",
+      mensagem: "Amiga, me liga quando puder",
+    },
 
-        { 
-          id: '9', 
-          foto: require('./assets/images/img07.png'),
-          nomeContato: 'Larissa', 
-          mensagem: 'Você já fez o trabalho?' 
-        },
+    {
+      id: "9",
+      foto: require("./assets/images/img07.png"),
+      nomeContato: "Larissa",
+      mensagem: "Você já fez o trabalho?",
+    },
 
-        { 
-          id: '10', 
-          foto: require('./assets/images/img08.png'),
-          nomeContato: 'Fernanda', 
-          mensagem: 'Amiga, me liga quando puder' 
-        }
+    {
+      id: "10",
+      foto: require("./assets/images/img08.png"),
+      nomeContato: "Fernanda",
+      mensagem: "Amiga, me liga quando puder",
+    },
   ];
   return (
     <SafeAreaProvider style={styles.telaPrincipal}>
@@ -99,10 +94,16 @@ export default function App() {
             <Text style={styles.titulo}>Conversas</Text>
 
             <View style={styles.grupoAcoes}>
-              <Pressable style={styles.botaoAcao} accessibilityLabel="Abrir câmera">
+              <Pressable
+                style={styles.botaoAcao}
+                accessibilityLabel="Abrir câmera"
+              >
                 <Ionicons name="camera-outline" size={24} color="#000" />
               </Pressable>
-              <Pressable style={styles.botaoAcao} accessibilityLabel="Mais opções">
+              <Pressable
+                style={styles.botaoAcao}
+                accessibilityLabel="Mais opções"
+              >
                 <Ionicons name="ellipsis-vertical" size={24} color="#000" />
               </Pressable>
             </View>
@@ -120,55 +121,64 @@ export default function App() {
             />
           </View>
         </SafeAreaView>
-
-        </View>
+      </View>
       <SafeAreaView edges={["bottom"]} style={styles.areaPrincipal}>
         <FlatList
-        
-        data={contatos.filter((contato) =>
-          contato.nomeContato.toLowerCase().includes(busca.toLowerCase())
-        )}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(contato) => contato.id}
-        renderItem={({ item }) => (
-          <View style={styles.linhaConversa}>
-            
-            <Image
-            source={item.foto}
-            style={styles.fotoContato}
-            />
-            <View>
-              <Text style={styles.nomeDaConversa}>
-              {item.nomeContato}
-            </Text>
-            <Text style={styles.mensagemDaConversa}>
-              {item.mensagem}
-            </Text>
-
+          style={styles.listaConversas}
+          data={contatos.filter((contato) =>
+            contato.nomeContato.toLowerCase().includes(busca.toLowerCase()),
+          )}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(contato) => contato.id}
+          renderItem={({ item }) => (
+            <View style={styles.linhaConversa}>
+              <Image source={item.foto} style={styles.fotoContato} />
+              <View>
+                <Text style={styles.nomeDaConversa}>{item.nomeContato}</Text>
+                <Text style={styles.mensagemDaConversa}>{item.mensagem}</Text>
+              </View>
             </View>
-            
-          </View>
-        )}
-      />
-      <Pressable 
-      style={styles.botaoNovaConversa}
-      accessibilityLabel="Nova conversa">
-        <Ionicons name="add" size={32} color="#fff" />
-      </Pressable>
-      
+          )}
+        />
+        <View style={styles.menuInferior}>
+          <Pressable style={styles.itemMenu} accessibilityLabel="Conversas">
+            <Ionicons name="chatbubbles" size={22} color="#a57b00" />
+            <Text style={styles.textoMenuAtivo}>Conversas</Text>
+          </Pressable>
 
+          <Pressable style={styles.itemMenu} accessibilityLabel="Atualizações">
+            <Ionicons name="sync-outline" size={22} color="#766d52" />
+            <Text style={styles.textoMenu}>Atualizações</Text>
+          </Pressable>
+
+          <Pressable style={styles.itemMenu} accessibilityLabel="Comunidades">
+            <Ionicons name="people-outline" size={22} color="#766d52" />
+            <Text style={styles.textoMenu}>Comunidades</Text>
+          </Pressable>
+
+          <Pressable style={styles.itemMenu} accessibilityLabel="Ligações">
+            <Ionicons name="call-outline" size={22} color="#766d52" />
+            <Text style={styles.textoMenu}>Ligações</Text>
+          </Pressable>
+        </View>
+        <Pressable style={styles.botaoNovaConversa}>
+          <Ionicons name="add" size={32} color="#fff" />
+        </Pressable>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 const styles = StyleSheet.create({
-  telaPrincipal:{
+  telaPrincipal: {
     flex: 1,
-    position:"relative",
+    position: "relative",
   },
   areaPrincipal: {
     flex: 1,
     position: "relative",
+  },
+  listaConversas: {
+    flex: 1,
   },
   barraPesquisa: {
     height: 42,
@@ -188,30 +198,29 @@ const styles = StyleSheet.create({
     color: "#4a3b16",
     fontSize: 16,
   },
-  linhaConversa:{
-    flexDirection:"row",
-    alignItems:"center",
-    gap:14,
-    borderBottomWidth:1,
-    borderBottomColor:"#eee5b8",
-    minHeight:82,
-    paddingHorizontal:16,
-    paddingVertical:10,
+  linhaConversa: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee5b8",
+    minHeight: 82,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
   },
-  botaoNovaConversa:{
+  botaoNovaConversa: {
     position: "absolute",
-    width:64,
-    height:64,
-    backgroundColor:'#d6a928',
-    bottom:80,
-    right:16,
-    borderRadius:32,
-    alignItems:"center",
-    justifyContent:"center",
-
+    width: 64,
+    height: 64,
+    backgroundColor: "#d6a928",
+    bottom: 130,
+    right: 16,
+    borderRadius: 32,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  fotoContato:{
-    objectFit:'cover',
+  fotoContato: {
+    objectFit: "cover",
     width: 60,
     height: 60,
     borderRadius: 30,
@@ -246,6 +255,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  menuInferior: {
+    height: 68,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderTopWidth: 1,
+    borderTopColor: "#eee5b8",
+    backgroundColor: "#fffdf5",
+  },
+  itemMenu: {
+    flex: 1,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 3,
+  },
+  textoMenu: {
+    color: "#766d52",
+    fontSize: 11,
+  },
+  textoMenuAtivo: {
+    color: "#a57b00",
+    fontSize: 11,
+    fontWeight: "700",
+  },
   nomeDaConversa: {
     fontSize: 17,
     fontWeight: "600",
@@ -254,6 +288,5 @@ const styles = StyleSheet.create({
     marginTop: 4,
     color: "#666",
     fontSize: 14,
-  
-  }
+  },
 });
