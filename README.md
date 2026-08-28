@@ -25,7 +25,7 @@ Este projeto usa o Expo instalado pelo proprio projeto. Nao e necessario instala
 
 ## Resultado
 
-<img src="./exercicio02/assets/images/resultado.png" alt="Imagem de resultado do projeto" width="200" height="200">
+<img src="./exercicio02/assets/images/resultado.png" alt="Imagem de resultado do projeto">
 
 ## Como baixar o projeto
 
