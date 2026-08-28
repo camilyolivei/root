@@ -92,3 +92,20 @@ O modo tunnel pode funcionar mesmo quando o celular e o computador nao conseguem
 - `assets/images/`: imagens dos contatos e imagem de resultado.
 - `assets/images/resultado.png`: imagem de teste exibida neste README.
 - `package.json`: dependencias e comandos do projeto.
+
+# Exercicio 03 - Matriz Financeira
+
+Projeto desenvolvido com React Native e Expo.
+
+## Resultado exercicio03
+
+<img src="./exercicio03/assets/resultado02.png" alt="Imagem de resultado do exercicio 03">
+
+## Como executar
+
+Abra a pasta `exercicio03` no VS Code e execute:
+
+```bash
+npm install
+npx expo start
+```
