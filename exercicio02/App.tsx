@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 10,
   },
   fotoContato: {
     objectFit: "cover",
